@@ -1,0 +1,116 @@
+:root {
+    --fc-small-font-size: .99em;
+    --fc-page-bg-color: #fff;
+    --fc-neutral-bg-color: rgba(208, 208, 208, 0.3);
+    --fc-neutral-text-color: #808080;
+    --fc-border-color: #808080;
+  
+    --fc-button-text-color: #fff;
+    --fc-button-bg-color: #0039cb;
+    --fc-button-border-color: #0039cb;
+    --fc-button-hover-bg-color: #768fff;
+    --fc-button-hover-border-color: #768fff;
+    --fc-button-active-bg-color: #768fff;
+    --fc-button-active-border-color: #768fff;
+  
+    --fc-event-bg-color: #1976d2;
+    --fc-event-border-color: #1976d2;
+    --fc-event-text-color: #fff;
+    --fc-event-selected-overlay-color: rgba(0, 0, 0, 0.25);
+  
+    --fc-event-resizer-thickness: 8px;
+    --fc-event-resizer-dot-total-width: 8px;
+    --fc-event-resizer-dot-border-width: 1px;
+  
+    --fc-non-business-color: rgba(215, 215, 215, 0.3);
+    --fc-bg-event-color: rgb(143, 223, 130);
+    --fc-bg-event-opacity: 0.3;
+    --fc-highlight-color: rgba(188, 232, 241, 0.3);
+    --fc-today-bg-color: rgba(255, 220, 40, 0.15);
+    --fc-now-indicator-color: red;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* :root {
+    --fc-border-color:#14213d;
+    --fc-small-font-size: .99em;
+    --fc-page-bg-color: #fff;
+    --fc-neutral-bg-color: rgba(208, 208, 208, 0.3);
+    --fc-neutral-text-color: #808080;
+  
+    --fc-col-header-cell-cushion-color:white;
+    --fc-neutral-text-color:white;
+  
+    --fc-button-text-color: rgba(245, 229, 2, 0.931);
+    --fc-button-bg-color: #2C3E50;
+    --fc-button-border-color: yellow;
+    --fc-button-hover-bg-color: #0e263b;
+    --fc-button-hover-border-color: white;
+    --fc-button-active-bg-color: #1a252f;
+    --fc-button-active-border-color: #151e27;
+  
+    --fc-event-bg-color: #3788d8;
+    --fc-event-border-color: #3788d8;
+    --fc-event-text-color: #fff;
+    --fc-event-selected-overlay-color: rgba(0, 0, 0, 0.25);
+  
+    --fc-event-resizer-thickness: 8px;
+    --fc-event-resizer-dot-total-width: 8px;
+    --fc-event-resizer-dot-border-width: 1px;
+  
+    --fc-non-business-color: white;
+    --fc-bg-event-color: rgb(143, 223, 130);
+    --fc-bg-event-opacity: 0.3;
+    --fc-highlight-color: rgba(188, 232, 241, 0.3);
+    --fc-today-bg-color: rgba(255, 219, 40, 0.548);
+    --fc-today-bg-color: #555b6e;
+    --fc-now-indicator-color: red;
+  
+  } */
+  
+  /* .calendar {
+    object-fit: contain;
+    position:relative;
+    display: inline-block;
+    left: 170px;
+    width: 2110px;
+    height: 730px;
+    background-color: #8a817c
+    var(--fc-neutral-text-color)
+  
+  }
+  
+  .block-example {
+      width: 200rem;
+      height: 40rem;
+      margin: 0.8rem;
+      background-color: yellow;
+      display: inline-block;
+  } */
