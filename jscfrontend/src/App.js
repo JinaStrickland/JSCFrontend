@@ -9,6 +9,7 @@ import Login from './Components/Login/Login';
 
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import 'fontsource-roboto'
 
 
 const App = () => {

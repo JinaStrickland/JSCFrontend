@@ -40,12 +40,11 @@ const JobApplications = (props) => {
 
       return (
           <div className={classes.root}>
-            <br/>
-              <Grid container spacing={3}>
-                  <Grid item xs={3}>
-                  <Paper className={classes.paper} elevation={0} style={{ height: '85vh' }}>
+              <Grid container spacing={3} >
+                  <Grid item xs={3} style={{backgroundColor: "gray"}} >
+                  <Paper className={classes.paper} elevation={0} style={{ height: '85vh'}}>
                       <h2 color="primary" > Job Applications </h2>
-                        <Link to="/addjobapplication" style={{ color: "black" }}>
+                        <Link to="/addjobapplication" >
                               <Fab color="primary" aria-label="add" size="small" >
                                   <AddIcon size="small" fontSize="small" />
                               </Fab>
