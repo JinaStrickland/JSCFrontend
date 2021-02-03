@@ -3,5 +3,4 @@
 An organization tool that allows a user to gather all job application information and track progress of each application
 
 <h3> Technology </h3>
-**Technology**
 JavaScript, React, React Hooks, Material UI, CSS
