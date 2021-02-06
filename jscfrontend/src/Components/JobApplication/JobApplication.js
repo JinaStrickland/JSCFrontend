@@ -58,7 +58,7 @@ function JobApplication(props) {
                     return (
                     <ListItem key={value} button>
                          <ListItemLink href={`/job_applications/${id}`}>
-                        <ListItemText id={labelId} primary={props.jobApp.application_name} />
+                        <ListItemText id={labelId} primary={props.jobApp.application_name} style={{ size: "20px"}} />
                         </ListItemLink>
                     <ListItemSecondaryAction>
                         <Checkbox edge="start" onChange={handleToggle(value)} disableRipple
