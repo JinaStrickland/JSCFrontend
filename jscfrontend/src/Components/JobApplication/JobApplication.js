@@ -68,7 +68,8 @@ function JobApplication(props) {
                     </ListItem>
                     );
                 })}
-                </List>
+            </List>
+
                 {/* <List dense className={classes.root}>
                     {[0].map((value) => {
                         const labelId = `checkbox-list-secondary-label-${value}`;
