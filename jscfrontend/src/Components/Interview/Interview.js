@@ -51,7 +51,6 @@ const Interview = (props) => {
 
     const handleAddInterview = (e) => {
         e.preventDefault()
-        
         fetch("http://localhost:3000/interviews/", {
             method: "POST",
             headers: {
@@ -109,7 +108,8 @@ const Interview = (props) => {
                           <form onSubmit={ (e) => handleAddInterview(e) }>
                             <Grid item xs={12} >
                                 <Paper className={classes.paper}> 
-                                    <TextField className={classes.container} noValidate style={{ margin: 1 }} margin="normal" type="datetime-local"
+                                    <TextField className={classes.container} noValidate style={{ margin: 1 }} 
+                                        margin="normal" type="datetime-local"
                                         fullWidth InputLabelProps={{ shrink: true, }} 
                                         label="Interview Date" name="interview_date" 
                                         value={ interviewDate } onChange={ handleInterviewDate } />

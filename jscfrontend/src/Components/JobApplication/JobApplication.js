@@ -1,16 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Checkbox from '@material-ui/core/Checkbox';
-import Divider from '@material-ui/core/Divider';
-import InboxIcon from '@material-ui/icons/Inbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
+// import Divider from '@material-ui/core/Divider';
+// import InboxIcon from '@material-ui/icons/Inbox';
+// import DraftsIcon from '@material-ui/icons/Drafts';
 
 function JobApplication(props) {
    
@@ -61,7 +61,7 @@ function JobApplication(props) {
                         <ListItemText id={labelId} primary={props.jobApp.application_name} style={{ size: "20px"}} />
                         </ListItemLink>
                     <ListItemSecondaryAction>
-                        <Checkbox edge="start" onChange={handleToggle(value)} disableRipple
+                        <Checkbox edge="end" onChange={handleToggle(value)} disableRipple
                                 checked={checked.indexOf(value) !== -1} tabIndex={-1}
                                 inputProps={{ 'aria-labelledby': labelId }} />
                     </ListItemSecondaryAction>

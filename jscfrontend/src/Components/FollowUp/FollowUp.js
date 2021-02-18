@@ -120,7 +120,7 @@ const FollowUp = (props) => {
                                 <Grid item xs={12}  >
                                     <Paper className={classes.paper}> 
                                     <KeyboardDatePicker style={{ margin: 1 }} margin="normal" fullWidth
-                                        id="date-picker-dialog" format="yyyy-MM-dd"
+                                        id="date-picker-dialog" format="yyyy-MM-dd" 
                                         label="Follow Up Date" name="follow_up_date" 
                                         value={followUpDate}  onChange={ handleFollowUpDate }
                                         KeyboardButtonProps={{ 'aria-label': 'change date', }} />
