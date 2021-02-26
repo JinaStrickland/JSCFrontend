@@ -61,6 +61,7 @@ const JobApplicationDetail = (props) => {
                 <Grid container spacing={3}>
                     <Grid item xs={12} >
                         <Paper className={classes.paper}>
+                             {console.log(job)}
                             <TextField style={{ margin: 1 }} margin="normal"
                                 fullWidth InputLabelProps={{ shrink: true, }}
                                 // helperText="Some important text"

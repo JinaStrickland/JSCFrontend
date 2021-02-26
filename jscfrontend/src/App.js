@@ -136,7 +136,7 @@ const App = () => {
                                                 handleAddJA={handleAddJA}
                                                 commOptions={ commOptions }
                                                 statusOptions={ statusOptions }/> }} /> 
-                
+                <JobApplicationDetail />
               </div>
             </Typography>
           </Switch>

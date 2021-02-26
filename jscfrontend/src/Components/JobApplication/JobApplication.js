@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import { Link } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -27,7 +27,7 @@ function JobApplication(props) {
     }
 
     const classes = useStyles();
-    const [checked, setChecked] = React.useState([1]);
+    const [checked, setChecked] = useState([1]);
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
@@ -58,7 +58,8 @@ function JobApplication(props) {
                     return (
                     <ListItem key={value} button>
                          <ListItemLink href={`/job_applications/${id}`}>
-                        <ListItemText id={labelId} primary={props.jobApp.application_name} style={{ size: "20px"}} />
+                        <ListItemText   id={labelId} primary={props.jobApp.application_name} 
+                                        style={{ size: "20px"}} />
                         </ListItemLink>
                     <ListItemSecondaryAction>
                         <Checkbox edge="end" onChange={handleToggle(value)} disableRipple
