@@ -57,7 +57,7 @@ const Interview = (props) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                interview_date: interviewDate,
+                interview_date: new Date(interviewDate).toString(),
                 information: information,
                 job_application_id: job.id,
             })
@@ -81,7 +81,7 @@ const Interview = (props) => {
                                     <TextField style={{ margin: 1 }}  margin="normal"
                                         fullWidth InputLabelProps={{ shrink: true, }}
                                         label="Interview Date" 
-                                        value={ interview.interview_date } />
+                                        value={ new Date(interview.interview_date).toLocaleString() } />
                                 </Paper>
                             </Grid>
                             <Grid item xs={12} >

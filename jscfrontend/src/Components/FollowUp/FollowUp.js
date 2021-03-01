@@ -79,7 +79,7 @@ const FollowUp = (props) => {
 
 
     return (
-        <div style={{ marginTop: "40px"}}>
+        <div style={{ marginTop: "40px" }}>
             <div className={classes.root}>
                 <Container maxWidth="xl" >
                 <Typography variant="h2" component="div">

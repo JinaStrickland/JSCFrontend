@@ -15,6 +15,7 @@ import 'fontsource-roboto'
 const App = () => {
 
   const [ allJAs, changeJAs ] = useState([])
+  // const [ allJAsLoading, changeAllJAsLoading ] = useState(false)
   const [ allFollowUps, changeFollowUps ] = useState([])
   const [ allInterviews, changeInterviews ] = useState([])
 
@@ -22,8 +23,12 @@ const App = () => {
   const statusOptions = [ "Sent Resume", "Interview Scheduled", "Wating...", "Another Round of Interview Scheduled", "I Did It! Got the Offer",  "Regrets by Me", "Regrets by Them", "With Pleasure!", "Bummer...Next!", "On Hold" ]
 
   useEffect(() => {
+    // changeAllJAsLoading(true)
     fetch("http://localhost:3000/job_applications")
-    .then(res => res.json())
+    .then(res => {
+            // changeAllJAsLoading(false)
+            return res.json()
+    })
     .then(jobapps => changeJAs(jobapps))
 
     fetch("http://localhost:3000/follow_ups")
@@ -108,6 +113,10 @@ const App = () => {
       {/* {console.log(allJAs)} */}
         <header className="App-header">
           <Navbar />
+          {/* <div style={{ width: "20px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
+                title={ "FullCalendarIsAPain" }>
+            FullCalendarIsAPain  // Truncate string w/ Ellipsis
+          </div> */}
         </header>
         {/* style={{ backgroundColor: '#cfe8fc', height: '105vh' }} */}
         <Container maxWidth="xl" >
@@ -125,7 +134,9 @@ const App = () => {
                   let id = parseInt(props.match.params.id)
                   let currentJA = allJAs.find(ja => ja.id === id)
                     if(!currentJA) { currentJA = {} }
+                    // return null
                     return <JobApplicationDetail  jobApp={ currentJA } id={ id } 
+                                                  // allJAsLoading={ allJAsLoading }
                                                   handleDeleteJA={ handleDeleteJA }
                                                   addInterview={addInterview}
                                                   addFollowUp={addFollowUp}
@@ -136,7 +147,6 @@ const App = () => {
                                                 handleAddJA={handleAddJA}
                                                 commOptions={ commOptions }
                                                 statusOptions={ statusOptions }/> }} /> 
-                <JobApplicationDetail />
               </div>
             </Typography>
           </Switch>
