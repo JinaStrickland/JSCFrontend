@@ -1,13 +1,31 @@
 import React from 'react'
 import FullCalendar from "@fullcalendar/react";
+
+// import { makeStyles } from '@material-ui/core/styles';
+
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from '@fullcalendar/list';
 import "./Calendar.css"
 
+// const useStyles = makeStyles((theme) => ({
+//     truncate: {
+//         width: "20px",
+//         whiteSpace: "nowrap",
+//         overflow: "hidden",
+//         textOverflow: "ellipsis"
+//     },
+// }));
+
+//  { <div style={{ width: "20px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
+//                 title={ "FullCalendarIsAPain" }>
+//             FullCalendarIsAPain  // Truncate string w/ Ellipsis
+//           </div> }
 
 const CalendarComponent = (props) => {
+
+    // const classes = useStyles();
     
     const renderFollowUpEventContent = () => {
         return props.allFollowUps.map(followUp => {
@@ -46,7 +64,7 @@ const CalendarComponent = (props) => {
     return (
         <div className="calendar">
             <div style={{variant: "contained" }} >
-                <FullCalendar
+                <FullCalendar 
                     initialView="dayGridMonth"
                     plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin ]}
                     headerToolbar={{ 

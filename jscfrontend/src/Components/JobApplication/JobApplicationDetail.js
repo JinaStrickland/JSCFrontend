@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
+
 const JobApplicationDetail = (props) => {
 
     const classes = useStyles();

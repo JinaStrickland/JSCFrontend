@@ -105,8 +105,6 @@ const App = () => {
     return (changeJAs(updatedJAs))
   }
 
-
-
   return (
     
     <div className="App"  >
@@ -126,9 +124,9 @@ const App = () => {
                 <Route path="/login" render={ () => { return <Login  />}} /> 
 
                 <Route path="/homepage" showNavbar="true" render={() => {
-                  return <JobApplications  jobApplications={ allJAs }  
-                                              allFollowUps={ allFollowUps }
-                                              allInterviews={ allInterviews } /> }}/> 
+                  return <JobApplications   jobApplications={ allJAs }  
+                                            allFollowUps={ allFollowUps }
+                                            allInterviews={ allInterviews } /> }}/> 
                                  
                 <Route path="/job_applications/:id" render={(props) => {
                   let id = parseInt(props.match.params.id)
