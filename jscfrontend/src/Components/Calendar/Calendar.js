@@ -1,13 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+
 import FullCalendar from "@fullcalendar/react";
-
-// import { makeStyles } from '@material-ui/core/styles';
-
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from '@fullcalendar/list';
 import "./Calendar.css"
+
+// import { makeStyles } from '@material-ui/core/styles';
 
 // const useStyles = makeStyles((theme) => ({
 //     truncate: {
@@ -61,12 +62,17 @@ const CalendarComponent = (props) => {
         return [renderFollowUpEventContent(), renderInterviewEventContent()].flat() 
     } 
 
+    // const handleDateClick = (e) => {
+    //     alert(e.dateStr)
+    //     return console.log("I've been clicked")
+    // }
+
     return (
         <div className="calendar">
             <div style={{variant: "contained" }} >
                 <FullCalendar 
-                    initialView="dayGridMonth"
                     plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin ]}
+                    initialView="dayGridMonth"
                     headerToolbar={{ 
                         left: "dayGridMonth,timeGridWeek,timeGridDay,list",
                         center: "title",
@@ -74,7 +80,8 @@ const CalendarComponent = (props) => {
                     editable={true}
                     slotDuration='00:30'
                     // eventContent={ }
-                    events={ calendarArray() } />
+                    events={ calendarArray() }
+                    />
             </div>
         </div>
     )

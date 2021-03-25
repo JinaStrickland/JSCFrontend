@@ -112,8 +112,8 @@ const App = () => {
         <header className="App-header">
           <Navbar />
           {/* <div style={{ width: "20px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
-                title={ "FullCalendarIsAPain" }>
-            FullCalendarIsAPain  // Truncate string w/ Ellipsis
+                title={ "Hello World" }>
+            Hello World  // Truncate string w/ Ellipsis
           </div> */}
         </header>
         {/* style={{ backgroundColor: '#cfe8fc', height: '105vh' }} */}
