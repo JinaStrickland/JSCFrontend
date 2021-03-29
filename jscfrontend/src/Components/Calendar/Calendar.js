@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom';
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -28,41 +28,46 @@ import "./Calendar.css"
 const CalendarComponent = (props) => {
 
     // const classes = useStyles();
+
+    const [clicked, setClicked] = useState(false)
+    const [url, setUrl] = useState("")
     
     const renderFollowUpEventContent = () => {
         return props.allFollowUps.map(followUp => {
-            let id = followUp.job_application.id
+            if(!followUp) { followUp = " " }
             let name = followUp.job_application.application_name
-            if(!name) { name = " " }
             let fId = followUp.id
             let fDate = followUp.follow_up_date 
             let fTitle = `${name} Follow Up`
-            let url = `/job_applications/${id}`
-
+            let jobAppId = followUp.job_application_id
+            // let url = `/job_applications/${jobAppId}`
             return {
-                    id: fId,
-                    title: fTitle,
-                    date: fDate,
-                    url: url
+                key: fId,
+                id: fId,
+                title: fTitle,
+                date: fDate,
+                jobAppId: jobAppId,
+                // url: url
             }
         })
     }
   
     const renderInterviewEventContent = () => {
         return props.allInterviews.map(interview => {
-            let id = interview.job_application.id
             let name = interview.job_application.application_name
             if(!name) { name = " " }
             let itrvwId = interview.id
             let itrvwDate = interview.interview_date 
             let itrvwTitle = `${name} Interview`
-            let url = `/job_applications/${id}`
-
+            let jobAppId = interview.job_application_id
+            // let url = `/job_applications/${jobAppId}`
             return {
-                    id: itrvwId,
-                    title: itrvwTitle,
-                    date: itrvwDate,
-                    url: url
+                key: itrvwId,
+                id: itrvwId,
+                title: itrvwTitle,
+                date: itrvwDate,
+                jobAppId: jobAppId,
+                // url: url
             }
         })
     }
@@ -72,10 +77,20 @@ const CalendarComponent = (props) => {
     } 
 
     const handleDateClick = (e) => {
-        return (
-            <Link to={`${e.url}`} > </Link>
-        )
+        let id = e.extendedProps.jobAppId
+        let newUrl = `/job_applications/${id}`
+        setUrl(newUrl) 
+        setClicked(!clicked)
     }
+
+    if(clicked === true) {
+        return <Redirect to={`${url}`}/>
+    }
+   
+
+
+
+    
 
     return (
         <div className="calendar">
