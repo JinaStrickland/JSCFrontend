@@ -11,7 +11,6 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import 'fontsource-roboto'
 
-
 const App = () => {
 
   const [ allJAs, changeJAs ] = useState([])
@@ -57,7 +56,6 @@ const App = () => {
     let findInt = allInterviews.find(int => int.job_application_id !== id)
     let updatedInts = [...allInterviews].filter(int => int.job_application_id !== id)
     changeInterviews(updatedInts, findInt)
-
   }
 
   const handleAddJA = (ja) => {
@@ -106,16 +104,14 @@ const App = () => {
   }
 
   return (
-    
     <div className="App"  >
-      {/* {console.log(allJAs)} */}
-        <header className="App-header">
-          <Navbar />
-          {/* <div style={{ width: "20px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
-                title={ "Hello World" }>
-            Hello World  // Truncate string w/ Ellipsis
-          </div> */}
-        </header>
+      <header className="App-header">
+        <Navbar />
+        {/* <div style={{ width: "20px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
+              title={ "Hello World" }>
+          Hello World  // Truncate string w/ Ellipsis
+        </div> */}
+      </header>
         {/* style={{ backgroundColor: '#cfe8fc', height: '105vh' }} */}
         <Container maxWidth="xl" >
           <Switch>
@@ -132,7 +128,6 @@ const App = () => {
                   let id = parseInt(props.match.params.id)
                   let currentJA = allJAs.find(ja => ja.id === id)
                     if(!currentJA) { currentJA = {} }
-                    // return null
                     return <JobApplicationDetail  jobApp={ currentJA } id={ id } 
                                                   // allJAsLoading={ allJAsLoading }
                                                   handleDeleteJA={ handleDeleteJA }
@@ -152,5 +147,4 @@ const App = () => {
     </div>
   );
 }
-
 export default App;

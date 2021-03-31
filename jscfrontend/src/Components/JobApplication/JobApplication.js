@@ -1,16 +1,11 @@
 import React, { useState } from 'react'
-// import { Link } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Checkbox from '@material-ui/core/Checkbox';
-// import Divider from '@material-ui/core/Divider';
-// import InboxIcon from '@material-ui/icons/Inbox';
-// import DraftsIcon from '@material-ui/icons/Drafts';
 
 function JobApplication(props) {
    
@@ -44,55 +39,25 @@ function JobApplication(props) {
 
     return (
         <div className={classes.root} >
-            {/* <div>
-                <Link to={`/job_applications/${id}`} >
-                    <h3 className="jas-title" style={{color: "black"}}> 
-                        { props.jobApp.application_name } 
-                    </h3>
-                </Link>
-            </div> */}
-
             <List dense className={classes.root}>
                 {[0].map((value) => {
                     const labelId = `checkbox-list-label-${value}`;
                     return (
                     <ListItem key={value} button>
-                         <ListItemLink href={`/job_applications/${id}`}>
-                        <ListItemText   id={labelId} primary={props.jobApp.application_name} 
-                                        style={{ size: "20px"}} />
-                        </ListItemLink>
-                    <ListItemSecondaryAction>
-                        <Checkbox edge="end" onChange={handleToggle(value)} disableRipple
-                                checked={checked.indexOf(value) !== -1} tabIndex={-1}
-                                inputProps={{ 'aria-labelledby': labelId }} />
-                    </ListItemSecondaryAction>
+                        <ListItemLink href={`/job_applications/${id}`}>
+                            <ListItemText   id={labelId} primary={props.jobApp.application_name} 
+                                            style={{ size: "20px"}} />
+                            </ListItemLink>
+                        <ListItemSecondaryAction>
+                            <Checkbox   edge="end" onChange={handleToggle(value)} disableRipple
+                                        checked={checked.indexOf(value) !== -1} tabIndex={-1}
+                                        inputProps={{ 'aria-labelledby': labelId }} />
+                        </ListItemSecondaryAction>
                     </ListItem>
                     );
                 })}
             </List>
-
-                {/* <List dense className={classes.root}>
-                    {[0].map((value) => {
-                        const labelId = `checkbox-list-secondary-label-${value}`;
-                        return (
-                        <ListItem key={value} button>
-                                <List component="nav" aria-label="secondary mailbox folders">
-                                <ListItemLink href={`/job_applications/${id}`}> 
-                                <ListItemText primary={ props.jobApp.application_name } />
-                                    </ListItemLink>
-                                </List>
-                            <ListItemSecondaryAction>
-                                <Checkbox edge="end" onChange={handleToggle(value)}
-                                    checked={checked.indexOf(value) !== -1}
-                                    inputProps={{ 'aria-labelledby': labelId }} />
-                            </ListItemSecondaryAction>
-                        </ListItem>
-                        );
-                    })}
-                </List> */}
         </div>
     )
 }
 export default JobApplication
-
-

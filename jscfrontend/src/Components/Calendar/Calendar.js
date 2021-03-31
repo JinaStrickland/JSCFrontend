@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom';
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -7,7 +7,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from '@fullcalendar/list';
 import "./Calendar.css"
-
+// import { Calendar } from '@material-ui/pickers';
 // import { makeStyles } from '@material-ui/core/styles';
 
 // const useStyles = makeStyles((theme) => ({
@@ -25,20 +25,27 @@ import "./Calendar.css"
 //           </div> }
 
 const CalendarComponent = (props) => {
-
     // const classes = useStyles();
+
+    const [url, setUrl] = useState("")
+    const [clicked, setClicked] = useState(false)
     
     const renderFollowUpEventContent = () => {
         return props.allFollowUps.map(followUp => {
+            if(!followUp) { followUp = " " }
             let name = followUp.job_application.application_name
-            if(!name) { name = " " }
             let fId = followUp.id
             let fDate = followUp.follow_up_date 
             let fTitle = `${name} Follow Up`
+            let jobAppId = followUp.job_application_id
+            // let url = `/job_applications/${jobAppId}`
             return {
-                    id: fId,
-                    title: fTitle,
-                    date: fDate,
+                key: fId,
+                id: fId,
+                title: fTitle,
+                date: fDate,
+                jobAppId: jobAppId,
+                // url: url
             }
         })
     }
@@ -50,10 +57,15 @@ const CalendarComponent = (props) => {
             let itrvwId = interview.id
             let itrvwDate = interview.interview_date 
             let itrvwTitle = `${name} Interview`
+            let jobAppId = interview.job_application_id
+            // let url = `/job_applications/${jobAppId}`
             return {
-                    id: itrvwId,
-                    title: itrvwTitle,
-                    date: itrvwDate,
+                key: itrvwId,
+                id: itrvwId,
+                title: itrvwTitle,
+                date: itrvwDate,
+                jobAppId: jobAppId,
+                // url: url
             }
         })
     }
@@ -62,10 +74,16 @@ const CalendarComponent = (props) => {
         return [renderFollowUpEventContent(), renderInterviewEventContent()].flat() 
     } 
 
-    // const handleDateClick = (e) => {
-    //     alert(e.dateStr)
-    //     return console.log("I've been clicked")
-    // }
+    const handleDateClick = (e) => {
+        let id = e.extendedProps.jobAppId
+        let newUrl = `/job_applications/${id}`
+        setUrl(newUrl) 
+        setClicked(!clicked)
+    }
+
+    if(clicked === true) {
+        return <Redirect to={`${url}`}/>
+    }
 
     return (
         <div className="calendar">
@@ -77,11 +95,18 @@ const CalendarComponent = (props) => {
                         left: "dayGridMonth,timeGridWeek,timeGridDay,list",
                         center: "title",
                         right: "today,prev,next", }}
+                    titleFormat={{
+                        year: "numeric", 
+                        month: "long", 
+                        day: "numeric",
+                        weekday: "long",
+                        hour: "numeric",
+                        minute: "numeric"
+                    }}
                     editable={true}
                     slotDuration='00:30'
-                    // eventContent={ }
                     events={ calendarArray() }
-                    />
+                    eventClick={ (e) => handleDateClick(e.event._def) } />
             </div>
         </div>
     )
