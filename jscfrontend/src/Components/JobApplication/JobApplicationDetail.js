@@ -35,13 +35,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
-
 const JobApplicationDetail = (props) => {
-
     const classes = useStyles();
     const job = props.jobApp || {}
-    // console.log(job)
 
     const [clicked, setClicked] = useState(false)
 
@@ -59,7 +55,6 @@ const JobApplicationDetail = (props) => {
     // }
 
     return (
-
         <div key={job.id} style={{ marginTop: "40px" }}>
             <div className={classes.root}>
                 <Container maxWidth="xl" >
@@ -227,5 +222,4 @@ const JobApplicationDetail = (props) => {
         </div>
     )
 }
-
 export default JobApplicationDetail

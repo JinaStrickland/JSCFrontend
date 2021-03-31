@@ -8,7 +8,6 @@ import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from '@fullcalendar/list';
 import "./Calendar.css"
 // import { Calendar } from '@material-ui/pickers';
-
 // import { makeStyles } from '@material-ui/core/styles';
 
 // const useStyles = makeStyles((theme) => ({
@@ -26,11 +25,10 @@ import "./Calendar.css"
 //           </div> }
 
 const CalendarComponent = (props) => {
-
     // const classes = useStyles();
 
-    const [clicked, setClicked] = useState(false)
     const [url, setUrl] = useState("")
+    const [clicked, setClicked] = useState(false)
     
     const renderFollowUpEventContent = () => {
         return props.allFollowUps.map(followUp => {
@@ -86,11 +84,6 @@ const CalendarComponent = (props) => {
     if(clicked === true) {
         return <Redirect to={`${url}`}/>
     }
-   
-
-
-
-    
 
     return (
         <div className="calendar">
@@ -102,12 +95,18 @@ const CalendarComponent = (props) => {
                         left: "dayGridMonth,timeGridWeek,timeGridDay,list",
                         center: "title",
                         right: "today,prev,next", }}
+                    titleFormat={{
+                        year: "numeric", 
+                        month: "long", 
+                        day: "numeric",
+                        weekday: "long",
+                        hour: "numeric",
+                        minute: "numeric"
+                    }}
                     editable={true}
                     slotDuration='00:30'
-                    // eventContent={ }
                     events={ calendarArray() }
-                    eventClick={ (e) => handleDateClick(e.event._def) } 
-                     />
+                    eventClick={ (e) => handleDateClick(e.event._def) } />
             </div>
         </div>
     )
