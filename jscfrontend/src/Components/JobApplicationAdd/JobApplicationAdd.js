@@ -48,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const JobApplicationAdd = (props) => {
     
     const [applicationName, setApplicationName ] = useState("")
@@ -56,7 +55,7 @@ const JobApplicationAdd = (props) => {
     const [status, setStatus ] = useState("")
     const [appliedLocation, setAppliedLocation ] = useState("")
     const [communicationType, setCommunicationType ] = useState("")
-    const [resumeSent, setResumeSent] = React.useState(new Date('2020-12-01T09:00:00'))
+    const [resumeSent, setResumeSent] = React.useState(new Date('2021-04-01T09:00:00'))
     const [interestLevel, setInterestLevel ] = useState("")
     // const [resume, setResume ] = useState("")
     // const [coverLetter, setCoverLetter ] = useState("")
@@ -69,10 +68,10 @@ const JobApplicationAdd = (props) => {
     const [title, setTitle ] = useState("")
     const [email, setEmail ] = useState("")
     const [phone, setPhone ] = useState("")
-    const [followUpDate, setFollowUpDate] = React.useState(new Date('2020-12-01T09:00:00'))
+    const [followUpDate, setFollowUpDate] = React.useState(new Date('2021-04-01T09:00:00'))
     const [contactType, setContactType ] = useState("")
     const [notes, setNotes ] = useState("")
-    const [ clicked, setClicked ] = useState(false)
+    const [clicked, setClicked] = useState(false)
 
 
     const handleCommunicationType = (e) => {
@@ -162,7 +161,7 @@ const JobApplicationAdd = (props) => {
                 applied_location: appliedLocation,
                 application_name: applicationName,
                 interest_level: interestLevel,
-                user_id: 13,
+                user_id: 43,
                 name: companyName,
                 street_address: streetAdress,
                 city: city,
@@ -194,20 +193,12 @@ const JobApplicationAdd = (props) => {
             <Container maxWidth="xl" >
             <Typography variant="h2" component="div">
                 <Grid container spacing={3} >
-                    <Grid item xs={12} >
+                    <Grid item xs={6} >
                         <Paper className={classes.paper}> 
                             <TextField style={{ margin: 1 }} margin="normal" className={classes.text}
                                 fullWidth InputLabelProps={{ shrink: true, }} 
                                 label="Application Title" 
                                 name="application_name" onChange={ handleApplicationName } />
-                       </Paper>
-                    </Grid>     
-                    <Grid item xs={6} >
-                        <Paper className={classes.paper}> 
-                            <TextField style={{ margin: 1 }} margin="normal" 
-                                fullWidth  InputLabelProps={{ shrink: true, }} 
-                                label="Company Name" 
-                                name="name" onChange={ handleCompanyName } />
                        </Paper>
                     </Grid>     
                     <Grid item xs={6} >
@@ -228,25 +219,20 @@ const JobApplicationAdd = (props) => {
                         <Paper className={classes.paper}> 
                             <TextField style={{ margin: 1 }} margin="normal" 
                                 fullWidth  InputLabelProps={{ shrink: true, }} 
+                                label="Company Name" 
+                                name="name" onChange={ handleCompanyName } />
+                       </Paper>
+                    </Grid>     
+
+                    <Grid item xs={6} >
+                        <Paper className={classes.paper}> 
+                            <TextField style={{ margin: 1 }} margin="normal" 
+                                fullWidth  InputLabelProps={{ shrink: true, }} 
                                 label="Job Applied Location"  
                                 name="applied_location" onChange={ handleAppliedLocation } />
                        </Paper>
                     </Grid>    
-                    <Grid item xs={6} >
-                        <Paper className={classes.paper}> 
-                        <FormControl className={classes.formControl} fullWidth style={{ margin: 1 }} margin="normal" >
-                            <InputLabel shrink id="demo-simple-select-placeholder-label-label">Communication Type</InputLabel>
-                            <Select labelId="demo-simple-select-placeholder-label-label" id="demo-simple-select-placeholder-label" 
-                                InputLabelProps={{ shrink: true, }} displayEmpty className={classes.selectEmpty}
-                                name="communication_type" value={communicationType} onChange={ handleCommunicationType } >
-                                        <MenuItem value="">  <em>Select</em>  </MenuItem>
-                                    { props.commOptions.map(option => {
-                                       return <MenuItem value={option} > {option} </MenuItem> }) }
-                            </Select>
-                        </FormControl>
-                       </Paper>
-                    </Grid>   
-                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Grid item xs={6}  >
                             <Paper className={classes.paper}> 
                             <KeyboardDatePicker style={{ margin: 1 }} margin="normal" fullWidth
@@ -265,7 +251,7 @@ const JobApplicationAdd = (props) => {
                                 label="Job Interest Level (1 - 5)" 
                                 name="interest_level" onChange={ handleInterestLevel } />
                        </Paper>
-                    </Grid>     
+                    </Grid>    
                     {/* <Grid item xs={6} >
                         <Paper className={classes.paper}> 
                             <TextField style={{ margin: 1 }} margin="normal" 
@@ -289,7 +275,7 @@ const JobApplicationAdd = (props) => {
                                 label="Contact Person's First Name" 
                                 name="first_name" onChange={ handleFirstName } />
                        </Paper>
-                    </Grid>     
+                    </Grid>   
                     <Grid item xs={6} >
                         <Paper className={classes.paper}> 
                             <TextField style={{ margin: 1 }} margin="normal" 
@@ -305,15 +291,21 @@ const JobApplicationAdd = (props) => {
                                 label="Job Title" 
                                 name="title" onChange={ handleTitle } />
                        </Paper>
-                    </Grid>     
+                    </Grid>      
                     <Grid item xs={6} >
                         <Paper className={classes.paper}> 
-                            <TextField style={{ margin: 1 }} margin="normal" 
-                                fullWidth  InputLabelProps={{ shrink: true, }} 
-                                label="Email Address" 
-                                name="email" onChange={ handleEmail } />
+                        <FormControl className={classes.formControl} fullWidth style={{ margin: 1 }} margin="normal" >
+                            <InputLabel shrink id="demo-simple-select-placeholder-label-label">Contact Type</InputLabel>
+                            <Select labelId="demo-simple-select-placeholder-label-label" id="demo-simple-select-placeholder-label" 
+                                InputLabelProps={{ shrink: true, }} displayEmpty className={classes.selectEmpty}
+                                name="communication_type" value={communicationType} onChange={ handleCommunicationType } >
+                                        <MenuItem value="">  <em>Select</em>  </MenuItem>
+                                    { props.commOptions.map(option => {
+                                       return <MenuItem value={option} > {option} </MenuItem> }) }
+                            </Select>
+                        </FormControl>
                        </Paper>
-                    </Grid>     
+                    </Grid>      
                     <Grid item xs={6} >
                         <Paper className={classes.paper}> 
                             <TextField style={{ margin: 1 }} margin="normal" 
@@ -345,7 +337,15 @@ const JobApplicationAdd = (props) => {
                                 label="Zipcode" 
                                 name="zipcode" onChange={ handleZipcode } />
                        </Paper>
-                    </Grid>     
+                    </Grid>    
+                    <Grid item xs={6} >
+                        <Paper className={classes.paper}> 
+                            <TextField style={{ margin: 1 }} margin="normal" 
+                                fullWidth  InputLabelProps={{ shrink: true, }} 
+                                label="Email Address" 
+                                name="email" onChange={ handleEmail } />
+                       </Paper>
+                    </Grid>   
                     <Grid item xs={6} >
                         <Paper className={classes.paper}> 
                             <TextField style={{ margin: 1 }} margin="normal" 
@@ -354,12 +354,6 @@ const JobApplicationAdd = (props) => {
                                 name="phone" onChange={ handlePhone } />
                        </Paper>
                     </Grid>     
-                    <Grid item xs={6} >
-                        <Paper className={classes.paper}> 
-                           
-                       </Paper>
-                    </Grid>     
-
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Grid item xs={6}  >
                             <Paper className={classes.paper}> 
@@ -371,11 +365,10 @@ const JobApplicationAdd = (props) => {
                         </Paper>
                         </Grid>   
                     </MuiPickersUtilsProvider>  
-
                     <Grid item xs={6} >
                         <Paper className={classes.paper}> 
                         <FormControl className={classes.formControl} fullWidth style={{ margin: 1 }} margin="normal" >
-                            <InputLabel shrink id="demo-simple-select-placeholder-label-label">Communication Type</InputLabel>
+                            <InputLabel shrink id="demo-simple-select-placeholder-label-label">Follow Up Contact Type</InputLabel>
                             <Select labelId="demo-simple-select-placeholder-label-label" id="demo-simple-select-placeholder-label" 
                                 InputLabelProps={{ shrink: true, }} displayEmpty className={classes.selectEmpty}
                                 name="contact_type" value={contactType} onChange={ handleContactType } >
@@ -385,12 +378,12 @@ const JobApplicationAdd = (props) => {
                             </Select>
                         </FormControl>
                        </Paper>
-                    </Grid>   
+                    </Grid>  
                     <Grid item xs={12} >
                         <Paper className={classes.paper}> 
                             <TextField style={{ margin: 1 }} margin="normal" variant="outlined"
                                 multiline rows={6} fullWidth InputLabelProps={{ shrink: true, }} 
-                                label="Notes" name="notes" onChange={ handleNotes } />
+                                label="General Notes" name="notes" onChange={ handleNotes } />
                        </Paper>
                     </Grid>     
                 </Grid>
@@ -415,5 +408,4 @@ const JobApplicationAdd = (props) => {
         </div>
     )
 }
-
 export default JobApplicationAdd

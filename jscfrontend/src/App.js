@@ -28,7 +28,10 @@ const App = () => {
             // changeAllJAsLoading(false)
             return res.json()
     })
-    .then(jobapps => changeJAs(jobapps))
+    .then(jobapps => {
+      changeJAs(jobapps)
+      console.log(jobapps)
+    })
 
     fetch("http://localhost:3000/follow_ups")
     .then(res => res.json())

@@ -26,7 +26,6 @@ import "./Calendar.css"
 
 const CalendarComponent = (props) => {
     // const classes = useStyles();
-
     const [url, setUrl] = useState("")
     const [clicked, setClicked] = useState(false)
     
@@ -87,22 +86,22 @@ const CalendarComponent = (props) => {
 
     return (
         <div className="calendar">
-            <div style={{variant: "contained" }} >
+            <div style={{variant: "contained", marginTop: "20px", marginRight: "40px" }} >
                 <FullCalendar 
                     plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin ]}
                     initialView="dayGridMonth"
                     headerToolbar={{ 
-                        left: "dayGridMonth,timeGridWeek,timeGridDay,list",
+                        right: "dayGridMonth,timeGridWeek,timeGridDay,list",
                         center: "title",
-                        right: "today,prev,next", }}
-                    titleFormat={{
-                        year: "numeric", 
-                        month: "long", 
-                        day: "numeric",
-                        weekday: "long",
-                        hour: "numeric",
-                        minute: "numeric"
-                    }}
+                        left: "today,prev,next", }}
+                    // titleFormat={{
+                    //     year: "numeric", 
+                    //     month: "long", 
+                    //     day: "numeric",
+                    //     weekday: "long",
+                    //     hour: "numeric",
+                    //     minute: "numeric"
+                    // }}
                     editable={true}
                     slotDuration='00:30'
                     events={ calendarArray() }

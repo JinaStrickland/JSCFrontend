@@ -22,18 +22,18 @@ function JobApplication(props) {
     }
 
     const classes = useStyles();
-    const [checked, setChecked] = useState([1]);
+    // const [checked, setChecked] = useState([1]);
 
-    const handleToggle = (value) => () => {
-        const currentIndex = checked.indexOf(value);
-        const newChecked = [...checked];
-            if (currentIndex === -1) {
-            newChecked.push(value);
-            } else {
-            newChecked.splice(currentIndex, 1);
-            }
-            setChecked(newChecked);
-    };
+    // const handleToggle = (value) => () => {
+    //     const currentIndex = checked.indexOf(value);
+    //     const newChecked = [...checked];
+    //         if (currentIndex === -1) {
+    //         newChecked.push(value);
+    //         } else {
+    //         newChecked.splice(currentIndex, 1);
+    //         }
+    //         setChecked(newChecked);
+    // };
 
     let id = props.jobApp.id 
 
@@ -46,13 +46,13 @@ function JobApplication(props) {
                     <ListItem key={value} button>
                         <ListItemLink href={`/job_applications/${id}`}>
                             <ListItemText   id={labelId} primary={props.jobApp.application_name} 
-                                            style={{ size: "20px"}} />
+                                            style={{}} />
                             </ListItemLink>
-                        <ListItemSecondaryAction>
+                        {/* <ListItemSecondaryAction>
                             <Checkbox   edge="end" onChange={handleToggle(value)} disableRipple
                                         checked={checked.indexOf(value) !== -1} tabIndex={-1}
                                         inputProps={{ 'aria-labelledby': labelId }} />
-                        </ListItemSecondaryAction>
+                        </ListItemSecondaryAction> */}
                     </ListItem>
                     );
                 })}

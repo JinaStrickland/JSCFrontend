@@ -60,7 +60,7 @@ const JobApplicationDetail = (props) => {
                 <Container maxWidth="xl" >
                     <Typography variant="h2" component="div">
                         <Grid container spacing={3}>
-                            <Grid item xs={12} >
+                            <Grid item xs={6} >
                                 <Paper className={classes.paper}>
                                     <TextField style={{ margin: 1 }} margin="normal"
                                         fullWidth InputLabelProps={{ shrink: true, }}
@@ -69,15 +69,7 @@ const JobApplicationDetail = (props) => {
                                         value={job.application_name} />
                                 </Paper>
                             </Grid>
-                            <Grid item xs={6} >
-                                <Paper className={classes.paper}>
-                                    <TextField style={{ margin: 1 }} margin="normal"
-                                        fullWidth InputLabelProps={{ shrink: true, }}
-                                        label="Company Name"
-                                        value={job.company && job.company.name} />
-                                </Paper>
-                            </Grid>
-                            <Grid item xs={6} >
+                                  <Grid item xs={6} >
                                 <Paper className={classes.paper}>
                                     <TextField style={{ margin: 1 }} margin="normal"
                                         fullWidth InputLabelProps={{ shrink: true, }}
@@ -89,18 +81,20 @@ const JobApplicationDetail = (props) => {
                                 <Paper className={classes.paper}>
                                     <TextField style={{ margin: 1 }} margin="normal"
                                         fullWidth InputLabelProps={{ shrink: true, }}
-                                        label="Job Applied Location"
-                                        value={job.applied_location} />
+                                        label="Company Name"
+                                        value={job.company && job.company.name} />
                                 </Paper>
                             </Grid>
+                      
                             <Grid item xs={6} >
                                 <Paper className={classes.paper}>
                                     <TextField style={{ margin: 1 }} margin="normal"
                                         fullWidth InputLabelProps={{ shrink: true, }}
-                                        label="Communication Type"
-                                        value={job.communication_type} />
+                                        label="Job Applied Location"
+                                        value={job.applied_location} />
                                 </Paper>
                             </Grid>
+
                             <Grid item xs={6} >
                                 <Paper className={classes.paper}>
                                     <TextField style={{ margin: 1 }} margin="normal"
@@ -135,15 +129,6 @@ const JobApplicationDetail = (props) => {
                                 <Paper className={classes.paper}>
                                     <TextField style={{ margin: 1 }} margin="normal"
                                         fullWidth InputLabelProps={{ shrink: true, }}
-                                        label="Company Address"
-                                        value={job.company && `${job.company.street_address}, ${job.company.city}, ${job.company.state} ${job.company.zipcode}`} />
-                                </Paper>
-                            </Grid>
-
-                            <Grid item xs={6} >
-                                <Paper className={classes.paper}>
-                                    <TextField style={{ margin: 1 }} margin="normal"
-                                        fullWidth InputLabelProps={{ shrink: true, }}
                                         label="Contact"
                                         value={job.contacts && job.contacts.length > 0 ? `${job.contacts[0].first_name} ${job.contacts[0].last_name}` : " "} />
                                 </Paper>
@@ -160,19 +145,34 @@ const JobApplicationDetail = (props) => {
                                 <Paper className={classes.paper}>
                                     <TextField style={{ margin: 1 }} margin="normal"
                                         fullWidth InputLabelProps={{ shrink: true, }}
+                                        label="Company Address"
+                                        value={job.company && `${job.company.street_address}, ${job.company.city}, ${job.company.state} ${job.company.zipcode}`} />
+                                </Paper>
+                            </Grid>
+                            <Grid item xs={6} >
+                                <Paper className={classes.paper}>
+                                    <TextField style={{ margin: 1 }} margin="normal"
+                                        fullWidth InputLabelProps={{ shrink: true, }}
                                         label="Email"
                                         value={job.contacts && job.contacts.length > 0 ? job.contacts[0].email : " "} />
                                 </Paper>
                             </Grid>
-                            <Grid item xs={12} >
+                            <Grid item xs={6} >
                                 <Paper className={classes.paper}>
-                                    <TextField tyle={{ margin: 1 }} margin="normal"
+                                    <TextField style={{ margin: 1 }} margin="normal"
                                         fullWidth InputLabelProps={{ shrink: true, }}
                                         label="Phone Number"
                                         value={job.contacts && job.contacts.length > 0 ? job.contacts[0].phone : " "} />
                                 </Paper>
                             </Grid>
-
+                            <Grid item xs={6} >
+                                <Paper className={classes.paper}>
+                                    <TextField style={{ margin: 1 }} margin="normal"
+                                        fullWidth InputLabelProps={{ shrink: true, }}
+                                        label="Communication Type"
+                                        value={job.communication_type} />
+                                </Paper>
+                            </Grid>
                             <Grid item xs={12} >
                                 <Paper className={classes.paper}>
                                     <InputBase style={{ margin: 1 }} edge="start" fullWidth inputProps={{ 'aria-label': 'naked' }}
@@ -193,7 +193,7 @@ const JobApplicationDetail = (props) => {
                                 <Paper className={classes.paper}>
                                     <TextField style={{ margin: 1 }} margin="normal" variant="outlined"
                                         multiline rows={6} fullWidth InputLabelProps={{ shrink: true, }}
-                                        label="Notes" value={job.notes} />
+                                        label="General Notes" value={job.notes} />
                                 </Paper>
                             </Grid>
                             <div>
@@ -201,10 +201,10 @@ const JobApplicationDetail = (props) => {
                                     onClick={() => handleRedirect(job.id)} className={classes.button}  >
                                     <DeleteIcon fontSize="large" />
                                 </IconButton>
-                                <IconButton aria-label="edit" type="submit" variant="contained" color="primary"
+                                {/* <IconButton aria-label="edit" type="submit" variant="contained" color="primary"
                                     onClick={console.log} className={classes.button} >
                                     <EditIcon fontSize="large" />
-                                </IconButton>
+                                </IconButton> */}
                                 <Link to="/homepage">
                                     <IconButton edge="end" aria-label="cancel" type="submit" variant="contained" color="primary"
                                         className={classes.button}  >

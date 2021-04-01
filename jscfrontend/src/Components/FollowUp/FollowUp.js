@@ -97,7 +97,7 @@ const FollowUp = (props) => {
                                 <Grid item xs={6} >
                                     <Paper className={classes.paper}> 
                                         <TextField style={{ margin: 1 }} margin="normal" fullWidth InputLabelProps={{ shrink: true, }}
-                                            label="Follow Up Type" 
+                                            label="Follow Up Contact Type" 
                                             value={ followUp.contact_type } />
                                     </Paper>
                                 </Grid>
@@ -130,7 +130,7 @@ const FollowUp = (props) => {
                             <Grid item xs={12} >
                                 <Paper className={classes.paper}> 
                                 <FormControl className={classes.formControl} fullWidth style={{ margin: 1 }} margin="normal" >
-                                    <InputLabel shrink id="demo-simple-select-placeholder-label-label">Communication Type</InputLabel>
+                                    <InputLabel shrink id="demo-simple-select-placeholder-label-label">Follow Up Contact Type</InputLabel>
                                     <Select labelId="demo-simple-select-placeholder-label-label" id="demo-simple-select-placeholder-label" 
                                         InputLabelProps={{ shrink: true, }} displayEmpty className={classes.selectEmpty}
                                         name="contact_type" value={contactType} onChange={ handleContactType } >

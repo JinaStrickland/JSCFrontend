@@ -23,11 +23,10 @@ const JobApplications = (props) => {
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
-      marginTop: "25px",
-      // marginRight: "30px",
+      marginTop: "20px",
     },
     paper: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(1),
       textAlign: 'center',
       color: theme.palette.text.secondary,
       boxShadow: "none",
@@ -38,10 +37,11 @@ const JobApplications = (props) => {
 
   return (
     <div className={classes.root}>
+  {/* Job Applications List Section */}
       <Grid container spacing={3} >
-        <Grid item xs={3} style={{}} >
-          <Paper className={classes.paper} elevation={0} style={{ height: '85vh'}} >
-          {/* <Paper className={classes.paper} elevation={0} style={{ height: '85vh'}}> */}
+        <Grid item xs={3} >
+          <Paper  className={classes.paper} elevation={0} 
+                  style={{ height: '85vh', fontSize: '16px'}} >
             <h2 color="primary" > Job Applications </h2>
               <Link to="/addjobapplication" >
                 <Fab color="primary" aria-label="add" size="small" >
@@ -54,8 +54,9 @@ const JobApplications = (props) => {
                 <JobApplication key={ jobApp.id } jobApp={ jobApp } />)}
           </Paper>
         </Grid>
+  {/* Calendar Section */}
         <Grid item xs={9}>
-          <Paper className={classes.paper} elevation={0} style={{ height: '85vh'}} >
+          <Paper className={classes.paper} elevation={0} style={{ height: '85vh' }} >
           {/* <Paper className={classes.paper} elevation={5} style={{ backgroundColor: '#cfe8fc', height: '100vh', position: "relative", height: '85vh' }} > */}
             <CalendarComponent  style={{ position: "relative" }} 
                                 jobApplications={ props.jobApplications }
