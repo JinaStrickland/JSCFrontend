@@ -29,8 +29,8 @@ const App = () => {
             return res.json()
     })
     .then(jobapps => {
-      changeJAs(jobapps)
-      console.log(jobapps)
+      let sortedJobs = jobapps.sort((a, b) => a.id - b.id)
+      changeJAs(sortedJobs)
     })
 
     fetch("http://localhost:3000/follow_ups")
@@ -63,14 +63,18 @@ const App = () => {
 
   const handleAddJA = (ja) => {
     changeJAs([...allJAs, ja])
-    let updatedFs = allFollowUps.map(followup => {
-      if (followup.id === ja.follow_ups.id) {
-          let newFollowup = [...followup, ja.follow_ups]
-          followup = newFollowup
-      }
-      return followup
-    })
-    return changeFollowUps(updatedFs)
+    // changeFollowUps([...allFollowUps, ja.follow_ups])
+    // debugger 
+    // let updatedFs = allFollowUps.map(followup => {
+    //   debugger 
+    //   if (followup.id === ja.follow_ups.id) {
+    //       let newFollowup = [...followup, ja.follow_ups]
+    //       followup = newFollowup
+    //   }
+    //   return followup
+    // })
+    // return changeFollowUps(updatedFs)
+    
   }
 
   const addFollowUp = (followUp) => {

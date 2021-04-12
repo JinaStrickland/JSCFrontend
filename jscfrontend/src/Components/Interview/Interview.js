@@ -74,24 +74,26 @@ const Interview = (props) => {
                     <Grid container spacing={3}>
                         
                         {  job.interviews && job.interviews.map(interview => { 
-                        return <>
-                            <Grid item xs={12} >
-                                <Paper className={classes.paper}> 
-                                    <TextField style={{ margin: 1 }}  margin="normal"
-                                        fullWidth InputLabelProps={{ shrink: true, }}
-                                        label="Interview Date" 
-                                        value={ new Date(interview.interview_date).toLocaleString() } />
-                                </Paper>
-                            </Grid>
-                            <Grid item xs={12} >
-                                <Paper className={classes.paper}> 
-                                    <TextField style={{ margin: 1 }} margin="normal" variant="outlined"
-                                        multiline rows={6} fullWidth InputLabelProps={{ shrink: true, }}
-                                        label="Information about the Interview"
-                                        value={ interview.information } />
-                                </Paper>
-                            </Grid>   
-                            </> })}
+                            const time = new Date(interview.interview_date).toLocaleString()
+                            const timeWithoutSeconds = time.replace(/:\d+ /, " ")
+                            return <>
+                                <Grid item xs={12} >
+                                    <Paper className={classes.paper}> 
+                                        <TextField style={{ margin: 1 }}  margin="normal"
+                                            fullWidth InputLabelProps={{ shrink: true, }}
+                                            label="Interview Date" 
+                                            value={ timeWithoutSeconds } />
+                                    </Paper>
+                                </Grid>
+                                <Grid item xs={12} >
+                                    <Paper className={classes.paper}> 
+                                        <TextField style={{ margin: 1 }} margin="normal" variant="outlined"
+                                            multiline rows={6} fullWidth InputLabelProps={{ shrink: true, }}
+                                            label="Information about the Interview"
+                                            value={ interview.information } />
+                                    </Paper>
+                                </Grid>   
+                                </> })}
                     <Grid item xs={12} >
                         <Paper className={classes.paper}>
                             <Fab color="primary" aria-label="add" size="small" onClick={ addInterview }>
