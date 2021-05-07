@@ -10,25 +10,11 @@ import "./Calendar.css"
 // import { Calendar } from '@material-ui/pickers';
 // import { makeStyles } from '@material-ui/core/styles';
 
-// const useStyles = makeStyles((theme) => ({
-//     truncate: {
-//         width: "20px",
-//         whiteSpace: "nowrap",
-//         overflow: "hidden",
-//         textOverflow: "ellipsis"
-//     },
-// }));
-
-//  { <div style={{ width: "20px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
-//                 title={ "FullCalendarIsAPain" }>
-//             FullCalendarIsAPain  // Truncate string w/ Ellipsis
-//           </div> }
-
 const CalendarComponent = (props) => {
-    // const classes = useStyles();
+
     const [url, setUrl] = useState("")
     const [clicked, setClicked] = useState(false)
-    
+
     const renderFollowUpEventContent = () => {
         return props.allFollowUps.map(followUp => {
             if(!followUp) { followUp = " " }
@@ -37,14 +23,12 @@ const CalendarComponent = (props) => {
             let fDate = followUp.follow_up_date 
             let fTitle = `${name} Follow Up`
             let jobAppId = followUp.job_application_id
-            // let url = `/job_applications/${jobAppId}`
             return {
                 key: fId,
                 id: fId,
                 title: fTitle,
                 date: fDate,
                 jobAppId: jobAppId,
-                // url: url
             }
         })
     }
@@ -57,14 +41,12 @@ const CalendarComponent = (props) => {
             let itrvwDate = interview.interview_date 
             let itrvwTitle = `${name} Interview`
             let jobAppId = interview.job_application_id
-            // let url = `/job_applications/${jobAppId}`
             return {
                 key: itrvwId,
                 id: itrvwId,
                 title: itrvwTitle,
                 date: itrvwDate,
                 jobAppId: jobAppId,
-                // url: url
             }
         })
     }

@@ -18,7 +18,7 @@ const App = () => {
   const [ allFollowUps, changeFollowUps ] = useState([])
   const [ allInterviews, changeInterviews ] = useState([])
 
-  const commOptions = [ "Email", "Phone", "Zoom", "In Person"  ]
+  const commOptions = [ "Email", "Phone", "Zoom", "In Person", "LinedIn Message"  ]
   const statusOptions = [ "Sent Resume", "Interview Scheduled", "Wating...", "Another Round of Interview Scheduled", "I Did It! Got the Offer",  "Regrets by Me", "Regrets by Them", "With Pleasure!", "Bummer...Next!", "On Hold" ]
 
   useEffect(() => {
@@ -63,18 +63,8 @@ const App = () => {
 
   const handleAddJA = (ja) => {
     changeJAs([...allJAs, ja])
-    // changeFollowUps([...allFollowUps, ja.follow_ups])
-    // debugger 
-    // let updatedFs = allFollowUps.map(followup => {
-    //   debugger 
-    //   if (followup.id === ja.follow_ups.id) {
-    //       let newFollowup = [...followup, ja.follow_ups]
-    //       followup = newFollowup
-    //   }
-    //   return followup
-    // })
-    // return changeFollowUps(updatedFs)
-    
+    ja.follow_ups[0].job_application = { application_name: ja.application_name, id: ja.id }
+    changeFollowUps([...allFollowUps, ...ja.follow_ups])
   }
 
   const addFollowUp = (followUp) => {
@@ -90,13 +80,6 @@ const App = () => {
     return changeJAs(updatedJAs)
   }
 
-  // const addInterview = (interview) => {
-  //   changeInterviews([allInterviews, interview])
-  //   let id = interview.job_application_id
-  //   let findJA = allJAs.find(job => job.id === id)
-  //   let updatedJAs = allJAs.filter(job => job.id !== id)
-  //   return changeJAs([updatedJAs, findJA])
-  // }
   const addInterview = (interview) => {
     changeInterviews([...allInterviews, interview])
     let id = interview.job_application_id
@@ -114,12 +97,7 @@ const App = () => {
     <div className="App"  >
       <header className="App-header">
         <Navbar />
-        {/* <div style={{ width: "20px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
-              title={ "Hello World" }>
-          Hello World  // Truncate string w/ Ellipsis
-        </div> */}
       </header>
-        {/* style={{ backgroundColor: '#cfe8fc', height: '105vh' }} */}
         <Container maxWidth="xl" >
           <Switch>
             <Typography component="div"  >   

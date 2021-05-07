@@ -133,18 +133,17 @@ const JobApplicationAdd = (props) => {
         setPhone(e.target.value)
     }
     const handleFollowUpDate = (data) => {
-        // console logs Thu Dec 10 2020 09:00:00 GMT-0500
+        // console.log(data) => Tue May 25 2021 21:01:00 GMT-0400 (Eastern Daylight Time)
         setFollowUpDate(data)
     }
     const handleContactType = (e) => {
         setContactType(e.target.value)
     }
-    const handleRedirect = (job) => {
-        handleSubmit(job)
+    const handleFormSubmit = (job) => {
+        handleAdd(job)
         setClicked(!clicked)
     }
-
-    const handleSubmit = (e) => {
+    const handleAdd = (e) => {
         e.preventDefault()
         fetch("http://localhost:3000/job_applications", {
             method: "POST",
@@ -161,7 +160,7 @@ const JobApplicationAdd = (props) => {
                 applied_location: appliedLocation,
                 application_name: applicationName,
                 interest_level: interestLevel,
-                user_id: 43,
+                user_id: 55,
                 name: companyName,
                 street_address: streetAdress,
                 city: city,
@@ -177,7 +176,6 @@ const JobApplicationAdd = (props) => {
             })
         }).then(res => res.json()).then(data => props.handleAddJA(data))}
 
-
     const classes = useStyles();
 
     if(clicked === true){
@@ -185,10 +183,9 @@ const JobApplicationAdd = (props) => {
     } 
 
     return (
-
         <div style={{ marginTop: "40px"}}>
         <form className={classes.root} noValidate autoComplete="off" 
-               onSubmit={ (e) => handleRedirect(e)} >
+               onSubmit={ (e) => handleFormSubmit(e)} >
           <div className={classes.root}>
             <Container maxWidth="xl" >
             <Typography variant="h2" component="div">
@@ -374,7 +371,7 @@ const JobApplicationAdd = (props) => {
                                 name="contact_type" value={contactType} onChange={ handleContactType } >
                                         <MenuItem value="">  <em>Select</em>  </MenuItem>
                                     { props.commOptions.map(option => {
-                                       return <MenuItem value={option} > {option} </MenuItem> }) }
+                                       return <MenuItem key={option} value={option} > {option} </MenuItem> }) }
                             </Select>
                         </FormControl>
                        </Paper>

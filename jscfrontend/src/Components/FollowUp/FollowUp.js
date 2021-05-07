@@ -18,8 +18,7 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import SaveIcon from '@material-ui/icons/Save';
 import CancelIcon from '@material-ui/icons/Cancel';
-// import EditIcon from '@material-ui/icons/Edit';
-
+import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "none",
   },
   paper: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(0),
     textAlign: 'left',
     boxShadow: "none",
     color: theme.palette.text.secondary,
@@ -76,7 +75,9 @@ const FollowUp = (props) => {
         changeShowFol(!showFol)
     }
 
-
+    // const submitEditFollowUp = (e) => {
+    //     console.log(e)
+    // }
 
     return (
         <div style={{ marginTop: "40px" }}>
@@ -89,25 +90,33 @@ const FollowUp = (props) => {
                         return <>   
                                 <Grid item xs={6} >
                                     <Paper className={classes.paper} >  
-                                        <TextField style={{ margin: 1}}  margin="normal" fullWidth InputLabelProps={{ shrink: true, }}
+                                        <TextField style={{ margin: 1}}  margin="normal"
+                                            nputLabelProps={{ shrink: true, }} fullWidth
+                                            noValidate autoComplete="off"
                                             label="Follow Up Date" 
                                             value={  followUp.follow_up_date } />
                                     </Paper>
                                 </Grid>
                                 <Grid item xs={6} >
                                     <Paper className={classes.paper}> 
-                                        <TextField style={{ margin: 1 }} margin="normal" fullWidth InputLabelProps={{ shrink: true, }}
+                                        <TextField style={{ margin: 1 }} margin="normal" 
+                                            InputLabelProps={{ shrink: true, }} fullWidth
+                                            noValidate autoComplete="off"
                                             label="Follow Up Contact Type" 
                                             value={ followUp.contact_type } />
                                     </Paper>
                                 </Grid>
-                            </>})}
+                            </> })}
 
                     <Grid item xs={12} >
                         <Paper className={classes.paper}>
                             <Fab edge="end" color="primary" aria-label="add" size="small" onClick={ clickAddFollowUp }>
                                 <AddIcon size="small" fontSize="small" />
                             </Fab>
+                            {/* <Fab edge="end" color="primary" aria-label="edit" type="submit" size="small" className={classes.button}
+                                onClick={ submitEditFollowUp } >
+                                <EditIcon size="small" fontSize="small" />
+                            </Fab> */}
                         </Paper>
                       </Grid>
                     </Grid>

@@ -11,7 +11,7 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import SaveIcon from '@material-ui/icons/Save';
 import CancelIcon from '@material-ui/icons/Cancel';
-// import EditIcon from '@material-ui/icons/Edit';
+import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "none",
   },
   paper: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(0),
     textAlign: 'left',
     boxShadow: "none",
     color: theme.palette.text.secondary,
@@ -65,6 +65,9 @@ const Interview = (props) => {
         changeShowInt(!showInt)
     }
 
+    // const submitEditInterview = (e) => {
+    //     console.log(e)
+    // }
 
     return (
         <div style={{ marginTop: "40px"}}>
@@ -99,6 +102,10 @@ const Interview = (props) => {
                             <Fab color="primary" aria-label="add" size="small" onClick={ addInterview }>
                                 <AddIcon size="small" fontSize="small" />
                             </Fab>
+                            {/* <Fab edge="end" color="primary" aria-label="edit" type="submit" size="small" className={classes.button}
+                                onClick={ submitEditInterview } >
+                                <EditIcon size="small" fontSize="small" />
+                            </Fab> */}
                           </Paper>
                       </Grid>
                       </Grid>

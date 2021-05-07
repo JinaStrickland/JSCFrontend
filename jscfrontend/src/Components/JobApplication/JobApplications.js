@@ -11,14 +11,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 const JobApplications = (props) => {
 
-  // const [ clickToAdd, changeClickToAdd ] = useState(false)
-
-  // const handleClickToAdd = () => {
-  //   changeClickToAdd(!clickToAdd)
-  //   if(clickToAdd === true) {
-  //     return <Redirect to="/"
-  //   }
-  // }
+  const jobApps = props.jobApplications || {}
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -50,7 +43,7 @@ const JobApplications = (props) => {
               </Link>
                 <br/>
                 <br/>
-              { props.jobApplications.map(jobApp => 
+              { jobApps.map(jobApp => 
                 <JobApplication key={ jobApp.id } jobApp={ jobApp } />)}
           </Paper>
         </Grid>

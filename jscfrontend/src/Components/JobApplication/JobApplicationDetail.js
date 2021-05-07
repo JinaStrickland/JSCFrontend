@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: "none",
     },
     paper: {
-        padding: theme.spacing(1),
+        padding: theme.spacing(0),
         textAlign: 'left',
         boxShadow: "none",
         color: theme.palette.text.secondary,
@@ -65,7 +65,7 @@ const JobApplicationDetail = (props) => {
                                     <TextField style={{ margin: 1 }} margin="normal"
                                         fullWidth InputLabelProps={{ shrink: true, }}
                                         // helperText="Some important text"
-                                        label="Application Title"
+                                        label="Application Title" 
                                         value={job.application_name} />
                                 </Paper>
                             </Grid>
@@ -190,7 +190,7 @@ const JobApplicationDetail = (props) => {
                             </Grid>
 
                             <Grid item xs={12} >
-                                <Paper className={classes.paper}>
+                                <Paper className={classes.paper} style={{ paddingTop: "50px" }}>
                                     <TextField style={{ margin: 1 }} margin="normal" variant="outlined"
                                         multiline rows={6} fullWidth InputLabelProps={{ shrink: true, }}
                                         label="General Notes" value={job.notes} />
