@@ -80,7 +80,7 @@ const Interview = (props) => {
                             const time = new Date(interview.interview_date).toLocaleString()
                             const timeWithoutSeconds = time.replace(/:\d+ /, " ")
                             return <>
-                                <Grid item xs={12} >
+                                <Grid item xs={6} >
                                     <Paper className={classes.paper}> 
                                         <TextField style={{ margin: 1 }}  margin="normal"
                                             fullWidth InputLabelProps={{ shrink: true, }}
@@ -110,11 +110,10 @@ const Interview = (props) => {
                       </Grid>
                       </Grid>
                       
-                    <Grid container spacing={3}> 
                     { showInt === true ? 
-                    <>
-                          <form onSubmit={ (e) => handleAddInterview(e) }>
-                            <Grid item xs={12} >
+                        <form onSubmit={ (e) => handleAddInterview(e) }>
+                        <Grid container spacing={3}> 
+                            <Grid item xs={6} >
                                 <Paper className={classes.paper}> 
                                     <TextField className={classes.container} noValidate style={{ margin: 1 }} 
                                         margin="normal" type="datetime-local"
@@ -139,10 +138,9 @@ const Interview = (props) => {
                                 className={classes.button} onClick={ addInterview } >
                                     <CancelIcon fontSize="large" />
                             </IconButton>
+                            </Grid> 
                         </form>
-                        </>
                     : "" }
-                    </Grid> 
             </Typography>
             </Container>
             </div>

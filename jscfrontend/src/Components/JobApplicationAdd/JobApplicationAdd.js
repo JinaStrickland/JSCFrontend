@@ -152,7 +152,7 @@ const JobApplicationAdd = (props) => {
             },
             body: JSON.stringify({
                 communication_type: communicationType,
-                resume_sent: resumeSent,
+                resume_sent: new Date(resumeSent).toString(),
                 // resume: resume,
                 // cover_letter: coverLetter,
                 status: status,
@@ -160,7 +160,7 @@ const JobApplicationAdd = (props) => {
                 applied_location: appliedLocation,
                 application_name: applicationName,
                 interest_level: interestLevel,
-                user_id: 55,
+                user_id: 61,
                 name: companyName,
                 street_address: streetAdress,
                 city: city,
@@ -171,7 +171,7 @@ const JobApplicationAdd = (props) => {
                 email: email,
                 title: title,
                 phone: phone,
-                follow_up_date: followUpDate,
+                follow_up_date: new Date(followUpDate).toString(),
                 contact_type: contactType,
             })
         }).then(res => res.json()).then(data => props.handleAddJA(data))}

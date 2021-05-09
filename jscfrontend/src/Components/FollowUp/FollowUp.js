@@ -66,7 +66,8 @@ const FollowUp = (props) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                follow_up_date: followUpDate,
+                // follow_up_date: followUpDate,
+                follow_up_date: new Date(followUpDate).toString(),
                 contact_type: contactType,
                 job_application_id: job.id,
             })
@@ -91,7 +92,7 @@ const FollowUp = (props) => {
                                 <Grid item xs={6} >
                                     <Paper className={classes.paper} >  
                                         <TextField style={{ margin: 1}}  margin="normal"
-                                            nputLabelProps={{ shrink: true, }} fullWidth
+                                            InputLabelProps={{ shrink: true, }} fullWidth
                                             noValidate autoComplete="off"
                                             label="Follow Up Date" 
                                             value={  followUp.follow_up_date } />
@@ -120,48 +121,47 @@ const FollowUp = (props) => {
                         </Paper>
                       </Grid>
                     </Grid>
-
-                    <Grid container spacing={3}> 
-                        { showFol === true ? 
-                        <>
-                            <form onSubmit={ (e) => handleAddFollowUp(e) }>
-                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                <Grid item xs={12}  >
-                                    <Paper className={classes.paper}> 
+                    
+                    { showFol === true ? 
+                        <form onSubmit={ (e) => handleAddFollowUp(e) }>
+                            <Grid container spacing={3}>
+                            <Grid item xs={6}  >
+                                <Paper className={classes.paper}> 
+                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                     <KeyboardDatePicker style={{ margin: 1 }} margin="normal" fullWidth
                                         id="date-picker-dialog" format="yyyy-MM-dd" 
                                         label="Follow Up Date" name="follow_up_date" 
                                         value={followUpDate}  onChange={ handleFollowUpDate }
                                         KeyboardButtonProps={{ 'aria-label': 'change date', }} />
-                                    </Paper>
-                                </Grid>   
-                            </MuiPickersUtilsProvider>  
-                            <Grid item xs={12} >
-                                <Paper className={classes.paper}> 
-                                <FormControl className={classes.formControl} fullWidth style={{ margin: 1 }} margin="normal" >
-                                    <InputLabel shrink id="demo-simple-select-placeholder-label-label">Follow Up Contact Type</InputLabel>
-                                    <Select labelId="demo-simple-select-placeholder-label-label" id="demo-simple-select-placeholder-label" 
-                                        InputLabelProps={{ shrink: true, }} displayEmpty className={classes.selectEmpty}
-                                        name="contact_type" value={contactType} onChange={ handleContactType } >
-                                                <MenuItem value="">  <em>Select</em>  </MenuItem>
-                                            { props.commOptions.map(option => {
-                                            return <MenuItem value={option} > {option} </MenuItem> }) }
-                                    </Select>
-                                </FormControl>
+                                </MuiPickersUtilsProvider>  
                                 </Paper>
-                            </Grid> 
-                                <IconButton edge="end" aria-label="save" type="submit" variant="contained" color="primary"  
-                                    className={classes.button}  >
-                                    <SaveIcon fontSize="large" />
-                                </IconButton>
-                                <IconButton edge="end" aria-label="cancel" type="submit" variant="contained" color="primary"  
-                                    className={classes.button}  onClick={ clickAddFollowUp } >
-                                    <CancelIcon fontSize="large" />
-                                </IconButton>
-                            </form>
-                        </> 
-                        : "" }
-                    </Grid>
+                            </Grid>   
+                        <Grid item xs={6} >
+                            <Paper className={classes.paper}> 
+                            <FormControl className={classes.formControl} fullWidth style={{ margin: 1 }} margin="normal" >
+                                <InputLabel shrink id="demo-simple-select-placeholder-label-label">Follow Up Contact Type</InputLabel>
+                                <Select labelId="demo-simple-select-placeholder-label-label" id="demo-simple-select-placeholder-label" 
+                                    InputLabelProps={{ shrink: true, }} displayEmpty className={classes.selectEmpty}
+                                    name="contact_type" value={contactType} onChange={ handleContactType } >
+                                            <MenuItem value="">  <em>Select</em>  </MenuItem>
+                                        { props.commOptions.map(option => {
+                                        return <MenuItem value={option} > {option} </MenuItem> }) }
+                                </Select>
+                            </FormControl>
+                            </Paper>
+                        </Grid> 
+                            <IconButton edge="end" aria-label="save" type="submit" variant="contained" color="primary"  
+                                className={classes.button}  >
+                                <SaveIcon fontSize="large" />
+                            </IconButton>
+                            <IconButton edge="end" aria-label="cancel" type="submit" variant="contained" color="primary"  
+                                className={classes.button}  onClick={ clickAddFollowUp } >
+                                <CancelIcon fontSize="large" />
+                            </IconButton>
+                            </Grid>
+                        </form>
+                    : "" }
+                 
                 </Typography>
                 </Container>
             </div>
