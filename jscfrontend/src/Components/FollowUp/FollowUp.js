@@ -5,8 +5,8 @@ import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
@@ -59,21 +59,25 @@ const FollowUp = (props) => {
 
     const handleAddFollowUp = (e) => {
         e.preventDefault()
-        
-        fetch("http://localhost:3000/follow_ups/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // follow_up_date: followUpDate,
-                follow_up_date: new Date(followUpDate).toString(),
-                contact_type: contactType,
-                job_application_id: job.id,
+
+        const addFollowUp = async () => {
+            const response = await fetch("http://localhost:3000/follow_ups/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // follow_up_date: followUpDate,
+                    follow_up_date: new Date(followUpDate).toString(),
+                    contact_type: contactType,
+                    job_application_id: job.id,
+                })
             })
-        })
-        .then(res => res.json()).then(data => props.addFollowUp(data))
-        changeShowFol(!showFol)
+            const followUp = await response.json()
+            props.addFollowUp(followUp)
+            changeShowFol(!showFol)
+          }
+          addFollowUp()
     }
 
     // const submitEditFollowUp = (e) => {
@@ -88,11 +92,12 @@ const FollowUp = (props) => {
                     <Grid container spacing={3}>
 
                         {  job.follow_ups && job.follow_ups.map(followUp =>  { 
-                        return <>   
+                        return (
+                            <React.Fragment key={followUp.id}>   
                                 <Grid item xs={6} >
                                     <Paper className={classes.paper} >  
                                         <TextField style={{ margin: 1}}  margin="normal"
-                                            InputLabelProps={{ shrink: true, }} fullWidth
+                                            fullWidth InputLabelProps={{ shrink: true, }}
                                             noValidate autoComplete="off"
                                             label="Follow Up Date" 
                                             value={  followUp.follow_up_date } />
@@ -101,13 +106,14 @@ const FollowUp = (props) => {
                                 <Grid item xs={6} >
                                     <Paper className={classes.paper}> 
                                         <TextField style={{ margin: 1 }} margin="normal" 
-                                            InputLabelProps={{ shrink: true, }} fullWidth
+                                            fullWidth InputLabelProps={{ shrink: true, }}
                                             noValidate autoComplete="off"
                                             label="Follow Up Contact Type" 
                                             value={ followUp.contact_type } />
                                     </Paper>
                                 </Grid>
-                            </> })}
+                            </React.Fragment>
+                        )})}
 
                     <Grid item xs={12} >
                         <Paper className={classes.paper}>
@@ -141,11 +147,11 @@ const FollowUp = (props) => {
                             <FormControl className={classes.formControl} fullWidth style={{ margin: 1 }} margin="normal" >
                                 <InputLabel shrink id="demo-simple-select-placeholder-label-label">Follow Up Contact Type</InputLabel>
                                 <Select labelId="demo-simple-select-placeholder-label-label" id="demo-simple-select-placeholder-label" 
-                                    InputLabelProps={{ shrink: true, }} displayEmpty className={classes.selectEmpty}
+                                    inputlabelprops={{ shrink: true, }} displayEmpty className={classes.selectEmpty}
                                     name="contact_type" value={contactType} onChange={ handleContactType } >
                                             <MenuItem value="">  <em>Select</em>  </MenuItem>
                                         { props.commOptions.map(option => {
-                                        return <MenuItem value={option} > {option} </MenuItem> }) }
+                                        return <MenuItem  key={option} value={option} > {option} </MenuItem> }) }
                                 </Select>
                             </FormControl>
                             </Paper>

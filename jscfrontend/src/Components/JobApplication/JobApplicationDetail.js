@@ -66,7 +66,7 @@ const JobApplicationDetail = (props) => {
                                         fullWidth InputLabelProps={{ shrink: true, }}
                                         // helperText="Some important text"
                                         label="Application Title" 
-                                        value={job.application_name} />
+                                        value={job.application_name && job.application_name.length > 0 ? job.application_name : " "} />
                                 </Paper>
                             </Grid>
                                   <Grid item xs={6} >
@@ -74,7 +74,7 @@ const JobApplicationDetail = (props) => {
                                     <TextField style={{ margin: 1 }} margin="normal"
                                         fullWidth InputLabelProps={{ shrink: true, }}
                                         label="Application Status"
-                                        value={job.status} />
+                                        value={job.status && job.status.length > 0 ? job.status : " "} />
                                 </Paper>
                             </Grid>
                             <Grid item xs={6} >
@@ -82,7 +82,7 @@ const JobApplicationDetail = (props) => {
                                     <TextField style={{ margin: 1 }} margin="normal"
                                         fullWidth InputLabelProps={{ shrink: true, }}
                                         label="Company Name"
-                                        value={job.company && job.company.name} />
+                                        value={job.company && job.company.name.length > 0 ? job.company.name : " "} />
                                 </Paper>
                             </Grid>
                       
@@ -91,7 +91,7 @@ const JobApplicationDetail = (props) => {
                                     <TextField style={{ margin: 1 }} margin="normal"
                                         fullWidth InputLabelProps={{ shrink: true, }}
                                         label="Job Applied Location"
-                                        value={job.applied_location} />
+                                        value={job.applied_location && job.applied_location.length > 0 ? job.applied_location : " "} />
                                 </Paper>
                             </Grid>
 
@@ -100,7 +100,7 @@ const JobApplicationDetail = (props) => {
                                     <TextField style={{ margin: 1 }} margin="normal"
                                         fullWidth InputLabelProps={{ shrink: true, }}
                                         label="Resume Sent Date"
-                                        value={job.resume_sent} />
+                                        value={job.resume_sent && job.resume_sent.toString().length > 0 ? job.resume_sent : " "} />
                                 </Paper>
                             </Grid>
                             <Grid item xs={6} >
@@ -108,7 +108,7 @@ const JobApplicationDetail = (props) => {
                                     <TextField style={{ margin: 1 }} margin="normal"
                                         fullWidth InputLabelProps={{ shrink: true, }}
                                         label="Job Interest Level (1 - 5)"
-                                        value={job.interest_level} />
+                                        value={job.interest_level && job.interest_level.toString().length > 0 ? job.interest_level : " "} />
                                 </Paper>
                             </Grid>
                             {/* <Grid item xs={6} >
@@ -146,7 +146,7 @@ const JobApplicationDetail = (props) => {
                                     <TextField style={{ margin: 1 }} margin="normal"
                                         fullWidth InputLabelProps={{ shrink: true, }}
                                         label="Company Address"
-                                        value={job.company && `${job.company.street_address}, ${job.company.city}, ${job.company.state} ${job.company.zipcode}`} />
+                                        value={job.company && job.company.length > 0 ? `${job.company.street_address}, ${job.company.city}, ${job.company.state} ${job.company.zipcode}` : " "} />
                                 </Paper>
                             </Grid>
                             <Grid item xs={6} >
@@ -170,7 +170,7 @@ const JobApplicationDetail = (props) => {
                                     <TextField style={{ margin: 1 }} margin="normal"
                                         fullWidth InputLabelProps={{ shrink: true, }}
                                         label="Communication Type"
-                                        value={job.communication_type} />
+                                        value={job.communication_type && job.communication_type.length > 0 ? job.communication_type : " "} />
                                 </Paper>
                             </Grid>
                             <Grid item xs={12} >
@@ -193,7 +193,8 @@ const JobApplicationDetail = (props) => {
                                 <Paper className={classes.paper} style={{ paddingTop: "50px" }}>
                                     <TextField style={{ margin: 1 }} margin="normal" variant="outlined"
                                         multiline rows={6} fullWidth InputLabelProps={{ shrink: true, }}
-                                        label="General Notes" value={job.notes} />
+                                        label="General Notes" 
+                                        value={job.notes && job.notes.length > 0 ? job.notes : " "} />
                                 </Paper>
                             </Grid>
                             <div>

@@ -50,19 +50,24 @@ const Interview = (props) => {
 
     const handleAddInterview = (e) => {
         e.preventDefault()
-        fetch("http://localhost:3000/interviews/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                interview_date: new Date(interviewDate).toString(),
-                information: information,
-                job_application_id: job.id,
+
+        const addInterview = async () => {
+            const response = await fetch("http://localhost:3000/interviews/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    interview_date: new Date(interviewDate).toString(),
+                    information: information,
+                    job_application_id: job.id,
+                })
             })
-        })
-        .then(res => res.json()).then(data => props.addInterview(data))
-        changeShowInt(!showInt)
+            const interview = await response.json()
+            props.addInterview(interview)
+            changeShowInt(!showInt)
+        }
+        addInterview()
     }
 
     // const submitEditInterview = (e) => {
@@ -79,24 +84,26 @@ const Interview = (props) => {
                         {  job.interviews && job.interviews.map(interview => { 
                             const time = new Date(interview.interview_date).toLocaleString()
                             const timeWithoutSeconds = time.replace(/:\d+ /, " ")
-                            return <>
-                                <Grid item xs={6} >
-                                    <Paper className={classes.paper}> 
-                                        <TextField style={{ margin: 1 }}  margin="normal"
-                                            fullWidth InputLabelProps={{ shrink: true, }}
-                                            label="Interview Date" 
-                                            value={ timeWithoutSeconds } />
-                                    </Paper>
-                                </Grid>
-                                <Grid item xs={12} >
-                                    <Paper className={classes.paper}> 
-                                        <TextField style={{ margin: 1 }} margin="normal" variant="outlined"
-                                            multiline rows={6} fullWidth InputLabelProps={{ shrink: true, }}
-                                            label="Information about the Interview"
-                                            value={ interview.information } />
-                                    </Paper>
-                                </Grid>   
-                                </> })}
+                            return (
+                                <React.Fragment key={interview.id}>
+                                    <Grid item xs={6} >
+                                        <Paper className={classes.paper}> 
+                                            <TextField style={{ margin: 1 }}  margin="normal"
+                                                fullWidth InputLabelProps={{ shrink: true, }}
+                                                label="Interview Date" 
+                                                value={ timeWithoutSeconds } />
+                                        </Paper>
+                                    </Grid>
+                                    <Grid item xs={12} >
+                                        <Paper className={classes.paper}> 
+                                            <TextField style={{ margin: 1 }} margin="normal" variant="outlined"
+                                                multiline rows={6} fullWidth InputLabelProps={{ shrink: true, }}
+                                                label="Information about the Interview"
+                                                value={ interview.information } />
+                                        </Paper>
+                                    </Grid>   
+                                </React.Fragment> 
+                            )})}
                     <Grid item xs={12} >
                         <Paper className={classes.paper}>
                             <Fab color="primary" aria-label="add" size="small" onClick={ addInterview }>

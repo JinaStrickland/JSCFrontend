@@ -6,8 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
@@ -145,36 +145,43 @@ const JobApplicationAdd = (props) => {
     }
     const handleAdd = (e) => {
         e.preventDefault()
-        fetch("http://localhost:3000/job_applications", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                communication_type: communicationType,
-                resume_sent: new Date(resumeSent).toString(),
-                // resume: resume,
-                // cover_letter: coverLetter,
-                status: status,
-                notes: notes,
-                applied_location: appliedLocation,
-                application_name: applicationName,
-                interest_level: interestLevel,
-                user_id: 61,
-                name: companyName,
-                street_address: streetAdress,
-                city: city,
-                state: state,
-                zipcode: zipcode,
-                first_name: firstName,
-                last_name: lastName,
-                email: email,
-                title: title,
-                phone: phone,
-                follow_up_date: new Date(followUpDate).toString(),
-                contact_type: contactType,
+
+        const addJA = async () => {
+            const response = await fetch("http://localhost:3000/job_applications", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    communication_type: communicationType,
+                    resume_sent: new Date(resumeSent).toString(),
+                    // resume: resume,
+                    // cover_letter: coverLetter,
+                    status: status,
+                    notes: notes,
+                    applied_location: appliedLocation,
+                    application_name: applicationName,
+                    interest_level: interestLevel,
+                    user_id: 64,
+                    name: companyName,
+                    street_address: streetAdress,
+                    city: city,
+                    state: state,
+                    zipcode: zipcode,
+                    first_name: firstName,
+                    last_name: lastName,
+                    email: email,
+                    title: title,
+                    phone: phone,
+                    follow_up_date: new Date(followUpDate).toString(),
+                    contact_type: contactType,
+                })
             })
-        }).then(res => res.json()).then(data => props.handleAddJA(data))}
+            const ja = await response.json()
+            props.handleAddJA(ja)
+        }
+        addJA()
+    }
 
     const classes = useStyles();
 
@@ -207,7 +214,7 @@ const JobApplicationAdd = (props) => {
                                 name="status" value={status} onChange={ handleStatus } >
                                         <MenuItem value="">  <em>Select</em>  </MenuItem>
                                     { props.statusOptions.map(stat => {
-                                       return <MenuItem value={stat} > {stat} </MenuItem> }) }
+                                       return <MenuItem key={stat} value={stat} > {stat} </MenuItem> }) }
                             </Select>
                         </FormControl>
                        </Paper>
@@ -215,7 +222,7 @@ const JobApplicationAdd = (props) => {
                     <Grid item xs={6} >
                         <Paper className={classes.paper}> 
                             <TextField style={{ margin: 1 }} margin="normal" 
-                                fullWidth  InputLabelProps={{ shrink: true, }} 
+                                fullWidth InputLabelProps={{ shrink: true, }} 
                                 label="Company Name" 
                                 name="name" onChange={ handleCompanyName } />
                        </Paper>
@@ -224,7 +231,7 @@ const JobApplicationAdd = (props) => {
                     <Grid item xs={6} >
                         <Paper className={classes.paper}> 
                             <TextField style={{ margin: 1 }} margin="normal" 
-                                fullWidth  InputLabelProps={{ shrink: true, }} 
+                                fullWidth InputLabelProps={{ shrink: true, }} 
                                 label="Job Applied Location"  
                                 name="applied_location" onChange={ handleAppliedLocation } />
                        </Paper>
@@ -244,7 +251,7 @@ const JobApplicationAdd = (props) => {
                     <Grid item xs={6} >
                         <Paper className={classes.paper}> 
                             <TextField style={{ margin: 1 }} margin="normal" 
-                                fullWidth  InputLabelProps={{ shrink: true, }} 
+                                fullWidth InputLabelProps={{ shrink: true, }} 
                                 label="Job Interest Level (1 - 5)" 
                                 name="interest_level" onChange={ handleInterestLevel } />
                        </Paper>
@@ -276,7 +283,7 @@ const JobApplicationAdd = (props) => {
                     <Grid item xs={6} >
                         <Paper className={classes.paper}> 
                             <TextField style={{ margin: 1 }} margin="normal" 
-                                fullWidth  InputLabelProps={{ shrink: true, }} 
+                                fullWidth InputLabelProps={{ shrink: true, }} 
                                 label="Last Name" 
                                 name="last_name" onChange={ handleLastName } />
                        </Paper>
@@ -284,7 +291,7 @@ const JobApplicationAdd = (props) => {
                     <Grid item xs={6} >
                         <Paper className={classes.paper}> 
                             <TextField style={{ margin: 1 }} margin="normal" 
-                                fullWidth  InputLabelProps={{ shrink: true, }} 
+                                fullWidth InputLabelProps={{ shrink: true, }} 
                                 label="Job Title" 
                                 name="title" onChange={ handleTitle } />
                        </Paper>
@@ -298,7 +305,7 @@ const JobApplicationAdd = (props) => {
                                 name="communication_type" value={communicationType} onChange={ handleCommunicationType } >
                                         <MenuItem value="">  <em>Select</em>  </MenuItem>
                                     { props.commOptions.map(option => {
-                                       return <MenuItem value={option} > {option} </MenuItem> }) }
+                                       return <MenuItem key={option} value={option} > {option} </MenuItem> }) }
                             </Select>
                         </FormControl>
                        </Paper>
@@ -322,7 +329,7 @@ const JobApplicationAdd = (props) => {
                     <Grid item xs={6} >
                         <Paper className={classes.paper}> 
                             <TextField style={{ margin: 1 }} margin="normal" 
-                                fullWidth  InputLabelProps={{ shrink: true, }} 
+                                fullWidth InputLabelProps={{ shrink: true, }} 
                                 label="State" 
                                 name="state" onChange={ handleState } />
                        </Paper>
@@ -330,7 +337,7 @@ const JobApplicationAdd = (props) => {
                     <Grid item xs={6} >
                         <Paper className={classes.paper}> 
                             <TextField style={{ margin: 1 }} margin="normal" 
-                                fullWidth  InputLabelProps={{ shrink: true, }} 
+                                fullWidth InputLabelProps={{ shrink: true, }} 
                                 label="Zipcode" 
                                 name="zipcode" onChange={ handleZipcode } />
                        </Paper>
@@ -338,7 +345,7 @@ const JobApplicationAdd = (props) => {
                     <Grid item xs={6} >
                         <Paper className={classes.paper}> 
                             <TextField style={{ margin: 1 }} margin="normal" 
-                                fullWidth  InputLabelProps={{ shrink: true, }} 
+                                fullWidth InputLabelProps={{ shrink: true, }} 
                                 label="Email Address" 
                                 name="email" onChange={ handleEmail } />
                        </Paper>
@@ -346,7 +353,7 @@ const JobApplicationAdd = (props) => {
                     <Grid item xs={6} >
                         <Paper className={classes.paper}> 
                             <TextField style={{ margin: 1 }} margin="normal" 
-                                fullWidth  InputLabelProps={{ shrink: true, }} 
+                                fullWidth InputLabelProps={{ shrink: true, }} 
                                 label="Phone Number" 
                                 name="phone" onChange={ handlePhone } />
                        </Paper>

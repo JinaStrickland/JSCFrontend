@@ -23,23 +23,29 @@ const App = () => {
 
   useEffect(() => {
     // changeAllJAsLoading(true)
-    fetch("http://localhost:3000/job_applications")
-    .then(res => {
-            // changeAllJAsLoading(false)
-            return res.json()
-    })
-    .then(jobapps => {
-      let sortedJobs = jobapps.sort((a, b) => a.id - b.id)
-      changeJAs(sortedJobs)
-    })
 
-    fetch("http://localhost:3000/follow_ups")
-    .then(res => res.json())
-    .then(followups => changeFollowUps(followups))
-    
-    fetch("http://localhost:3000/interviews")
-    .then(res => res.json())
-    .then(interviews => changeInterviews(interviews))
+    const fetchJAs = async () => {
+      const response = await fetch("http://localhost:3000/job_applications")
+      const jobapps = await response.json()
+      const sortedJobs = jobapps.sort((a, b) => a.id - b.id)
+      changeJAs(sortedJobs)
+    }
+    fetchJAs()
+
+    const fetchFollowUps = async () => {
+      const response = await fetch("http://localhost:3000/follow_ups")
+      const followups = await response.json()
+      changeFollowUps(followups)
+    }
+    fetchFollowUps()
+
+    const fetchInterviews = async () => {
+      const response = await fetch("http://localhost:3000/interviews")
+      const interviews = await response.json()
+      changeInterviews(interviews)
+    }
+    fetchInterviews()
+
   }, [])
 
   const handleDeleteJA = (id) => {
